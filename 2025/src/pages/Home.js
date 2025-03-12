@@ -24,10 +24,6 @@ function Home() {
     <div className="home">
       {/* 메인 배너 */}
       <section className="main-banner" style={{backgroundImage: "url('/img/background.png')", backgroundSize: "cover", backgroundPosition: "center"}}>
-        <div className="banner-content">
-          <h1>{homeData.mainBanner.title}</h1>
-          <h2>{homeData.mainBanner.subtitle}</h2>
-        </div>
       </section>
 
       {/* 빠른 링크 배너 */}
