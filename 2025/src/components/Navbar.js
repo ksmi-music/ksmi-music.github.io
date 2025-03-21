@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          한국음악정보학회
+          <img src="/img/logo_ksmi.png" alt="한국음악정보학회 로고" />
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
@@ -18,7 +18,7 @@ function Navbar() {
           <li className="nav-item">
             <Link to="/officers" className="nav-link">임원진</Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to="/seminars" className="nav-link">학술세미나</Link>
           </li>
           <li className="nav-item">
@@ -29,7 +29,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link to="/notice" className="nav-link">공지사항</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

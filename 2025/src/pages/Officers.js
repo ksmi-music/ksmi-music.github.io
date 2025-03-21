@@ -27,9 +27,8 @@ function Officers() {
         <div className="officers-grid">
           {officersData.executives.map((executive, index) => (
             <div key={index} className="officer-card">
-              <img src={executive.image} alt={executive.position} />
               <h3>{executive.position}</h3>
-              <p className="name">{executive.name} {executive.title}</p>
+              <p className="name">{executive.name}</p>
               <p className="affiliation">{executive.affiliation}</p>
             </div>
           ))}
@@ -61,8 +60,9 @@ function Officers() {
             <div key={index} className="committee">
               <h3>{committee.name}</h3>
               <ul>
-                <li>위원장: {committee.chair}</li>
-                <li>간사: {committee.secretary}</li>
+                {committee.members.map((member, mIndex) => (
+                  <li key={mIndex}>{member.name} ({member.affiliation})</li>
+                ))}
               </ul>
             </div>
           ))}
@@ -70,20 +70,22 @@ function Officers() {
       </section>
 
       {/* 자문위원회 */}
-      <section className="advisory-board">
-        <h2>자문위원회</h2>
-        <div className="advisors-list">
-          <ul>
-            {officersData.advisors.map((advisor, index) => (
-              <li key={index}>
-                <span className="name">{advisor.name}</span>
-                <span className="title">{advisor.title}</span>
-                <span className="affiliation">{advisor.affiliation}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {officersData.advisors && officersData.advisors.length > 0 && (
+        <section className="advisory-board">
+          <h2>자문위원회</h2>
+          <div className="advisors-list">
+            <ul>
+              {officersData.advisors.map((advisor, index) => (
+                <li key={index}>
+                  <span className="name">{advisor.name}</span>
+                  <span className="title">{advisor.title}</span>
+                  <span className="affiliation">{advisor.affiliation}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
