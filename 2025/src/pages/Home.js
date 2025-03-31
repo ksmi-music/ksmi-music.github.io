@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Home.css';
-import { INICIS_CONFIG } from '../properties';
-import axios from 'axios';
 import { usePayment } from '../hooks/usePayment';
 import { REGISTRATION_TYPES } from '../constants/payment';
 
@@ -69,12 +66,24 @@ function Home() {
           <p><strong>등록 기간:</strong> 2025년 4월 6일 일요일 오후 11시 59분까지</p>
           <p><strong>행사 일시:</strong> 2025년 4월 18일 금요일</p>
           <p><strong>행사 장소:</strong> 한국과학기술원 (KAIST) 학술문화관 5F (정근모 컨퍼런스홀 + 존 해너홀)</p>
-          <p><strong>결제 방식:</strong> 하단부 결제 버튼 이용</p>
+          <p><strong>결제 방식:</strong> 현재 결제 시스템이 구축 준비중에 있습니다. 사전 등록 후, 추후에 결제를 진행할 예정입니다.</p>
           <p><strong>기타 문의:</strong> ksmi2025@gmail.com</p>
-          <p>등록이 완료 된 후 비용 환불은 불가합니다.</p>
         </div>
 
-        <form className="registration-form-fields" onSubmit={handleSubmit}>
+        <div className="pre-registration-container">
+          <p className="pre-registration-text">
+            아래 버튼을 클릭하여 제 1차 KSMI-한국 음악정보학회 심포지엄 사전등록을 진행해 주세요.
+          </p>
+          
+          <button 
+            className="submit-button"
+            onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSepsvQgfwQe28m_tI4RtVje824hDLKfP8dnF66635GEVJ2k0Q/viewform?usp=sharing', '_blank')}
+          >
+            사전 등록하러가기
+          </button>
+        </div>
+
+        {/* <form className="registration-form-fields" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="lastName">성</label>
             <input 
@@ -162,7 +171,8 @@ function Home() {
           >
             {loading ? '처리중...' : '결제하기'}
           </button>
-        </form>
+        </form> */}
+
       </section>
 
     </div>
