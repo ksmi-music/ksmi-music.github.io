@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSMI 심포지엄 사전등록</title>
+    <link rel="stylesheet" href="payments.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="home">
+        <section class="registration-form">
+            <h2>제 1차 KSMI-한국 음악정보학회 심포지엄 사전등록</h2>
+            <div class="registration-info">
+                <p><strong>등록 기간:</strong> 2025년 4월 6일 일요일 오후 11시 59분까지</p>
+                <p><strong>행사 일시:</strong> 2025년 4월 18일 금요일</p>
+                <p><strong>행사 장소:</strong> 한국과학기술원 (KAIST) 학술문화관 5F</p>
+                <p><strong>결제 방식:</strong> 현재 결제 시스템이 구축 준비중에 있습니다.</p>
+                <p><strong>기타 문의:</strong> ksmi2025@gmail.com</p>
+            </div>
+
+            <form class="registration-form-fields" id="paymentForm">
+                <div class="form-group">
+                    <label for="lastName">성</label>
+                    <input type="text" id="lastName" placeholder="예: 홍" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">이름</label>
+                    <input type="text" id="firstName" placeholder="예: 길동" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="affiliation">소속</label>
+                    <input type="text" id="affiliation" placeholder="예: 카이스트 Mac 랩" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" placeholder="예: example@mail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">전화번호</label>
+                    <input type="tel" id="phone" placeholder="예: 010-1234-5678" required>
+                </div>
+
+                <div class="form-group">
+                    <label>구분 선택 *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="student" name="registrationType" required>
+                            <label for="student">학생 - 30,000₩</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="regular" name="registrationType" required>
+                            <label for="regular">일반 - 50,000₩</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">결제하기</button>
+            </form>
+        </section>
+    </div>
+    <!-- 이니시스 PC 결제 폼 -->
+    <div id="inicisPaymentForm" style="display: none;">
+        <form id="SendPayForm_id" method="post">
+            <input type="text" name="goodname" id="goodname" value="" readonly>
+            <input type="text" name="buyername" id="buyername" value="" readonly>
+            <input type="text" name="buyertel" id="buyertel" value="" readonly>
+            <input type="text" name="buyeremail" id="buyeremail" value="" readonly>
+            <input type="text" name="price" id="price" value="" readonly>
+            <input type="hidden" name="mid" id="mid" value="">
+            <input type="hidden" name="gopaymethod" id="gopaymethod" value="Card">
+            <input type="hidden" name="mKey" id="mKey" value="">
+            <input type="hidden" name="signature" id="signature" value="">
+            <input type="hidden" name="oid" id="oid" value="">
+            <input type="hidden" name="timestamp" id="timestamp" value="">
+            <input type="hidden" name="version" value="1.0">
+            <input type="hidden" name="currency" value="WON">
+            <input type="hidden" name="returnUrl" id="returnUrl" value="">
+            <input type="hidden" name="closeUrl" id="closeUrl" value="">
+            <input type="hidden" name="acceptmethod" value="">
+        </form>
+    </div>
+
+    <!-- 이니시스 모바일 결제 폼 -->
+    <div id="inicisMobilePaymentForm" style="display: none;">
+        <form id="mobileweb" name="mobileweb" method="post" accept-charset="euc-kr">
+            <input type="hidden" name="P_NEXT_URL" value="">
+            <input type="hidden" name="P_INI_PAYMENT" value="">
+            <input type="hidden" name="P_MID" value="">
+            <input type="hidden" name="P_OID" value="">
+            <input type="hidden" name="P_GOODS" value="">
+            <input type="hidden" name="P_AMT" value="">
+            <input type="hidden" name="P_UNAME" value="">
+        </form>
+    </div>
+
+    <script src="payment.js"></script>
+</body>
+</html>
