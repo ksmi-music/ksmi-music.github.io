@@ -1,0 +1,312 @@
+/* 컨퍼런스 일정 - Apple Inc. 스타일 */
+.schedule-section {
+  margin: 60px auto;
+  padding: 40px 20px;
+  width: 70%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.schedule-intro {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #515154;
+}
+
+.compact-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.compact-schedule::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: #e0e0e5;
+  z-index: 0;
+}
+
+.schedule-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 15px 15px 15px 50px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: none;
+  overflow: hidden;
+  margin-left: 10px;
+  z-index: 1;
+}
+
+.schedule-card::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #06c;
+  z-index: 2;
+  box-shadow: 0 0 0 4px white;
+}
+
+.schedule-card.keynote::before {
+  background: #2c5282;
+  width: 18px;
+  height: 18px;
+}
+
+.schedule-card.break::before {
+  background: #06c;
+}
+
+.schedule-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.link-badge {
+  background-color: #f2f2f7;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 5px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.time-badge {
+  position: absolute;
+  left: 50px;
+  top: 15px;
+  background-color: #f2f2f7;
+  color: #515154;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.schedule-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #1d1d1f;
+}
+
+.schedule-brief {
+  font-size: 14px;
+  color: #515154;
+  line-height: 1.4;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: modal-appear 0.3s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 1rem 1.5rem 1rem;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  background-color: #f8f8f8;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.modal-time {
+  font-size: 16px;
+  color: #515154;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: #515154;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background-color: #e5e5e5;
+  color: #000;
+}
+
+.modal-body {
+  padding: 28px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+  color: #333;
+  text-align: left;
+}
+
+.modal-body ul {
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  list-style-type: disc;
+  text-align: left;
+}
+
+.modal-body li {
+  display: list-item;
+  margin-bottom: 8px;
+  color: #333;
+  text-align: left;
+}
+
+.keynote-details h4 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.keynote-details .speaker {
+  font-style: italic;
+  margin-bottom: 18px;
+  color: #515154;
+  font-size: 18px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.speaker {
+  font-weight: 600;
+}
+
+.keynote-details p {
+  line-height: 1.7;
+  color: #333;
+  font-size: 16px;
+  text-align: left;
+  font-weight: 400;
+}
+
+/* Add specific styles for poster-list */
+.poster-list ul {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #808080;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.poster-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* 포스터 목록 텍스트 */
+.collapsible-text {
+  background-color: #f2f2f7;
+  color: #515154;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 3px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.collapsible-text:hover {
+  color: #174ea6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .schedule-section {
+    width: 95%;
+    padding: 30px 15px;
+  }
+  
+  .compact-schedule {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 16px;
+  }
+  
+  .modal-header h2 {
+    font-size: 22px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+} 

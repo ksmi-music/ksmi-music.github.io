@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>"></link>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>KSMI-한국 음악정보학회 결제 페이지</title>
+        <style>
+            body {
+                font-family: 'Roboto', Arial, sans-serif;
+                background-color: #f5f5f5;
+                color: #424242;
+            }
+            .wrap {
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+            }
+            main {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .card {
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: 24px 24px 60px;
+                margin-bottom: 40px;
+                background: white;
+                position: relative;
+            }
+            .tit h2 {
+                color: #1a73e8;
+                font-weight: 500;
+                text-align: center;
+                margin-bottom: 8px;
+            }
+            .tit p {
+                text-align: center;
+                color: #5f6368;
+            }
+            .card_tit h3 {
+                color: #202124;
+                border-bottom: 1px solid #e0e0e0;
+                padding-bottom: 12px;
+                margin-bottom: 24px;
+                text-align: center;
+            }
+            .input {
+                margin-bottom: 12px;
+            }
+            .input.param {
+                font-weight: 500;
+                color: #5f6368;
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #dadce0;
+                border-radius: 4px;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+            input[type="text"]:focus {
+                border-color: #1a73e8;
+                box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+            }
+            .btn_area {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 20px;
+                background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,1));
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                border-radius: 0 0 8px 8px;
+            }
+            .btn_solid_pri {
+                background-color: #1a73e8;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 24px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                min-width: 140px;
+            }
+            .btn_solid_sec {
+                background-color: #5f6368;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 24px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                min-width: 140px;
+            }
+            .btn_solid_pri:hover {
+                background-color: #1765cc;
+            }
+            .btn_solid_sec:hover {
+                background-color: #4a4d51;
+            }
+            ul {
+                padding-left: 20px;
+            }
+            li {
+                margin-bottom: 8px;
+                color: #5f6368;
+            }
+            .card_desc {
+                background-color: #f8f9fa;
+                padding: 16px;
+                border-radius: 4px;
+                margin-bottom: 24px;
+            }
+            .card_desc h4 {
+                color: #202124;
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            .col-10 {
+                width: 83.33%;
+                float: left;
+                position: relative;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            .col-sm-2 {
+                width: 16.66%;
+                float: left;
+                position: relative;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            .footer {
+            background-color: #2c5282;
+            color: #ffffff;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+            }
+
+            .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            }
+
+            .footer-section {
+            margin-bottom: 20px;
+            }
+
+            .footer-section h3 {
+            color: #ffffff;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 8px 0;
+            font-size: 0.9em;
+            line-height: 1.6;
+            }
+
+            .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            }
+
+            .footer-section ul li {
+            margin-bottom: 10px;
+            }
+
+            .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+            }
+
+            .footer-section ul li a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+            }
+
+            .footer-bottom {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 20px 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            }
+
+            .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8em;
+            margin: 0;
+            }
+
+            /* 소셜 미디어 링크 스타일 (필요한 경우) */
+            .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            }
+
+            .social-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            }
+
+            .social-links a:hover {
+            color: #ffffff;
+            }
+
+            /* 반응형 디자인 */
+            @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-section ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+            }
+
+            /* 뉴스레터 구독 폼 스타일 (필요한 경우) */
+            .newsletter-form {
+            margin-top: 15px;
+            }
+
+            .newsletter-form input {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 200px;
+            }
+
+            .newsletter-form button {
+            padding: 8px 15px;
+            background-color: #ffffff;
+            color: #2c5282;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            }
+
+            .newsletter-form button:hover {
+            background-color: #f0f0f0;
+            }
+
+            @media (max-width: 480px) {
+            .newsletter-form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+                margin-right: 0;
+            }
+            } 
+            @media (max-width: 768px) {
+                .col-sm-2 {
+                    width: 100%;
+                    float: none;
+                }
+                .col-10 {
+                    width: 100%;
+                    float: none;
+                }
+            }
+            .card_container {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 0 15px;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+                background-color: transparent;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card_container section {
+                width: 100%;
+                position: relative;
+            }
+
+            @media (max-width: 768px) {
+                .card_container {
+                    padding: 0 10px;
+                }
+            }
+        </style>
+		
+        <!-- 테스트 JS  -->
+        <!-- <script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script> -->
+		<script language="javascript" type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
+        <!-- =================================================================================================================================================
+		
+				테스트 JS 는 이니시스 테스트 MID (INIpayTest, INIBillTst)로만 요청할 수 있습니다.
+				부여받은 가맹점 MID 세팅 시, '반드시' 운영 JS로 변경한 후 결제 진행 부탁드립니다. (위 운영 JS 주석 해제 필요)
+				
+		================================================================================================================================================= -->
+		<script type="text/javascript">
+            function paybtn() {
+                // 선택된 가격 정보를 form에 설정하고 결제 진행
+                const priceValue = document.getElementById('priceInput').value;
+                // 폼을 제출하기 전에 현재 선택된 가격 값으로 hidden input을 업데이트
+                document.getElementById('formPriceInput').value = priceValue;
+                // 바로 INIStdPay 결제 모듈 실행
+                INIStdPay.pay('SendPayForm_id');
+            }
+            function updatePriceAndRedirect() {
+                // 선택된 가격과 사용자 정보 가져오기
+                const priceValue = document.getElementById('priceInput').value;
+                const buyerName = document.querySelector('input[name="buyername"]').value;
+                const buyerTel = document.querySelector('input[name="buyertel"]').value;
+                const buyerEmail = document.querySelector('input[name="buyeremail"]').value;
+                
+                // URL에 모든 정보를 query parameter로 포함
+                const queryParams = new URLSearchParams({
+                    price: priceValue,
+                    name: buyerName,
+                    tel: buyerTel,
+                    email: buyerEmail
+                }).toString();
+                
+                window.location.href = '/payment?' + queryParams;
+            }
+        </script>
+    </head>
+
+    <body class="wrap">
+
+        <!-- 본문 -->
+        <main class="col-8 cont" id="bill-01">
+            <!-- 페이지타이틀 -->
+            <section class="mb-5">
+                <div class="tit">
+                    <h1>제 1차 KSMI-한국 음악정보학회 결제 페이지</h1>
+                </div>
+            </section>
+            <!-- //페이지타이틀 -->
+
+
+            <!-- 카드CONTENTS -->
+            <div class="card_container">
+            <section class="menu_cont mb-5">
+                <div class="card">
+                    <div class="card_tit">
+                        <a href="https://music-informatics.kr/">
+                            <img src="/img/logo_ksmi.png" alt="한국음악정보학회 로고" width="300px"/>
+                        </a>
+                    </div>
+                    <!-- 유의사항 -->
+                    <div class="card_desc">
+                        <h4>※ 행사 정보</h4>
+                        <ul>
+                            <li>등록 기간: 2025년 4월 13일 일요일 오후 11시 59분까지</li>
+                            <li>행사 일시: 2025년 4월 18일 금요일</li>
+                            <li>행사 장소: 한국과학기술원 (KAIST) 학술문화관 5F (정근모 컨퍼런스홀 + 존 해너홀)</li>
+                            <li>기타 문의: ksmi2025@gmail.com</li>
+                            <li>환불 규정: 결제 후 등록이 완료되었을시, 취소 및 환불이 불가합니다.</li>
+                        </ul>
+                    </div>
+                    <!-- //유의사항 -->
+
+                    <div class="card_container">
+                    <form name="" id="SendPayForm_id" method="post">
+                        <div class="row g-3 justify-content-between" style="--bs-gutter-x:0rem;">
+                            <input type="hidden" name="version" value="1.0">
+                            <input type="hidden" name="gopaymethod" value="Card:DirectBank:VBank:HPP">
+                            <input type="hidden" name="mid" value="<%=mid%>">
+                            <input type="hidden" name="oid" value="<%=oid%>">
+                            
+                            
+                            <input type="hidden" name="timestamp" value="<%=timestamp%>">
+                            <input type="hidden" name="use_chkfake" value="<%=use_chkfake%>">
+                            <input type="hidden" name="signature" value="<%=signature%>">
+                            <input type="hidden" name="verification" value="<%=verification%>">
+                            <input type="hidden" name="mKey" value="<%=mKey%>">
+                            <input type="hidden" name="currency" value="WON">
+                            
+                            <label class="col-10 col-sm-2 input param" style="border:none;">이름 <span style="color: red;">*</span></label>
+                            <label class="col-10 col-sm-9 input">
+                                <input type="text" name="buyername" placeholder="홍길동" required>
+                            </label>
+                            
+                            <label class="col-10 col-sm-2 input param" style="border:none;">전화번호 <span style="color: red;">*</span></label>
+                            <label class="col-10 col-sm-9 input">
+                                <input type="text" name="buyertel" placeholder="01012345678" required>
+                            </label>
+                            
+                            <label class="col-10 col-sm-2 input param" style="border:none;">이메일 <span style="color: red;">*</span></label>
+                            <label class="col-10 col-sm-9 input">
+                                <input type="text" name="buyeremail" placeholder="name@example.com" required>
+                            </label>
+<!--                             
+                            <div class="col-10 col-sm-1">
+                                <br/>
+                                <p> <b>Important!</b> 가격을 먼저 선택해주신 다음에, 이름, 전화번호, 이메일을 입력해주세요. <br/> 불편을 드려서 죄송합니다.</p>
+                                <br/>
+                            </div> -->
+
+                            <label class="col-10 col-sm-2 input param" style="border:none;">등록상품 <span style="color: red;">*</span></label>
+                            <label class="col-10 col-sm-9 input">
+                                <div style="display: flex; flex-direction: column; gap: 10px;">
+                                    <div>
+                                        <input type="radio" id="student" name="goodname" value="studnet" onchange="updatePrice(this.value)" required>
+                                        <label for="student" style="margin-left: 8px;">1. 학생등록: 30000원</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="regular" name="goodname" value="general" onchange="updatePrice(this.value)" required>
+                                        <label for="regular" style="margin-left: 8px;">2. 일반등록: 60000원</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="student_dinner" name="goodname" value="student_dinner" onchange="updatePrice(this.value)" required>
+                                        <label for="student_dinner" style="margin-left: 8px;">3. 학생등록 + 저녁식사/네트워킹: 50000원</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="regular_dinner" name="goodname" value="regular_dinner" onchange="updatePrice(this.value)" required>
+                                        <label for="regular_dinner" style="margin-left: 8px;">4. 일반등록 + 저녁식사/네트워킹: 80000원</label>
+                                    </div>
+                                    <!-- <div>
+                                        <input type="radio" id="test" name="goodname" value="test" onchange="updatePrice(this.value)" required>
+                                        <label for="test" style="margin-left: 8px;">5. 테스트 등록: 1000원</label>
+                                    </div> -->
+                                </div>
+                            </label>
+                            <input type="hidden" id="priceInput" name="price" value="<%= price %>">
+                            <input type="hidden" id="formPriceInput" name="price" value="<%= price %>">
+
+                            <script>
+                                function updatePrice(selectedOption) {
+                                    const priceInput = document.getElementById('priceInput');
+                                    if (selectedOption === 'studnet') {    
+                                        priceInput.value = '30000';
+                                    } else if (selectedOption === 'general') {
+                                        priceInput.value = '60000';
+                                    } else if (selectedOption === 'student_dinner') {
+                                        priceInput.value = '50000';
+                                    } else if (selectedOption === 'regular_dinner') {
+                                        priceInput.value = '80000';
+                                    }
+                                    // 가격이 변경되면 '가격 업데이트' 버튼을 표시하고 결제 요청 버튼 숨김
+                                    document.getElementById('updatePriceBtn').style.display = 'block';
+                                    document.getElementById('paymentBtn').style.display = 'none';
+                                    
+                                    // 버튼 컨테이너 스타일 변경
+                                    document.getElementById('button_container').style.background = 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,1))';
+                                }
+                                
+                                // 페이지 로드 시 query parameter에서 정보 복원
+                                window.onload = function() {
+                                    const urlParams = new URLSearchParams(window.location.search);
+                                    const priceValue = urlParams.get('price');
+                                    const buyerName = urlParams.get('name');
+                                    const buyerTel = urlParams.get('tel');
+                                    const buyerEmail = urlParams.get('email');
+                                    
+                                    // 가격 설정
+                                    if (priceValue === '30000') {
+                                        document.getElementById('student').checked = true;
+                                    } else if (priceValue === '60000') {
+                                        document.getElementById('regular').checked = true;
+                                    } else if (priceValue === '50000') {
+                                        document.getElementById('student_dinner').checked = true;
+                                    } else if (priceValue === '80000') {
+                                        document.getElementById('regular_dinner').checked = true;
+                                    }
+                                    document.getElementById('priceInput').value = priceValue;
+                                    
+                                    // 사용자 정보 복원
+                                    if (buyerName) document.querySelector('input[name="buyername"]').value = buyerName;
+                                    if (buyerTel) document.querySelector('input[name="buyertel"]').value = buyerTel;
+                                    if (buyerEmail) document.querySelector('input[name="buyeremail"]').value = buyerEmail;
+                                    
+                                    // 초기 버튼 상태 설정
+                                    document.getElementById('updatePriceBtn').style.display = 'none';
+                                    document.getElementById('paymentBtn').style.display = 'block';
+                                    document.getElementById('button_container').style.background = 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,1))';
+                                }
+                            </script>
+                            
+                            <input type="hidden" name="returnUrl" value="https://music-informatics.kr/INIstdpay_pc_return.ejs">
+                            <input type="hidden" name="closeUrl" value="https://music-informatics.kr/close">
+                            <input type="hidden" name="acceptmethod" value="HPP(1):va_receipt:below1000:centerCd(Y)">
+                        </div>
+                    </form>
+                    </div>
+                    <div id="button_container" class="btn_area card_container">
+                        <button id="updatePriceBtn" onclick="updatePriceAndRedirect()" class="btn_solid_sec" style="display: none;">가격이 업데이트 되었습니다. 클릭해서 확인해주세요.</button>
+                        <button id="paymentBtn" onclick="paybtn()" class="btn_solid_pri">결제 요청</button>
+                    </div>
+					
+                </div>
+            </section>
+            </div>
+			
+            <footer className="footer">
+                <div className="footer-content">
+                  <div className="footer-section">
+                    <h3>한국음악정보학회</h3>
+                    <p>대표자: 남주한</p>
+                    <p>사업자번호: 207-82-72979</p>
+                    <p>이메일: ksmi2025@gmail.com</p>
+                    <!-- <p>연락처: 010-9541-6332</p> -->
+                    <p>사업장주소: 대전광역시 유성구 어은로 57</p>
+          
+                  </div>
+                  <div className="footer-section">
+                    <h3>빠른 링크</h3>
+                    <ul>
+                      <li><a href="/about">학회소개</a></li>
+                      <li><a href="/notice">공지사항</a></li>
+                      <li><a href="/contact">연락처</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="footer-bottom">
+                  <p>&copy; 2025 한국음악정보학회. All rights reserved.</p>
+                </div>
+              </footer>
+        </main>
+		
+    </body>
+</html>
