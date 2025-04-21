@@ -37,10 +37,10 @@ app.get(["/", "/about", "/officers", "/schedule"], function (req, res) {
 });
 
 
-const INICIS_MID='musicinf82'
-const INICIS_PW='ksmi2025!'
-const INICIS_SIGN_KEY='ZFdxWTcydzVPNEQwNVZGWXVOM0NZdz09'
-const INICIS_MKEY='1111'
+const INICIS_MID='#'
+const INICIS_PW='#'
+const INICIS_SIGN_KEY='#'
+const INICIS_MKEY='#'
 
 // const INICIS_MID='INIpayTest'
 // const INICIS_SIGN_KEY='SU5JTElURV9UUklQTEVERVNfS0VZU1RS'

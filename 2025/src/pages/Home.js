@@ -91,7 +91,7 @@ function Home() {
             Step2. 결제 하러가기
         </button>
       </section> */}
-
+{/* 
       <section className="registration-form">
         <h2>제 1차 KSMI-한국 음악정보학회 심포지엄 사전등록</h2>
         <div className="registration-info">
@@ -108,7 +108,7 @@ function Home() {
         >
           사전등록이 마감되었습니다. 감사합니다.
         </button>
-      </section>
+      </section> */}
 
       <section className="location-section">
         <h2>장소 (Venue)</h2>
